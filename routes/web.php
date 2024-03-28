@@ -17,3 +17,5 @@ use App\Http\Controllers\LeaveController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+

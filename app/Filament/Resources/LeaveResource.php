@@ -60,13 +60,15 @@ class LeaveResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\DatePicker::make('date')
-                    // ->native(false)
-                    // ->displayFormat('d/m/Y')
+                    ->native(false)
+                    ->displayFormat('d/m/Y')
                     ->required(),
+                Forms\Components\DatePicker::make('to_date')
+                    ->native(false) ,
                 // Forms\Components\TextInput::make('reason')
                 //     ->maxLength(255)
                 //     ->default(null),
-                ])->columns(2),
+                ])->columns(3),
                 Forms\Components\Section::make('Leave Status')
                 ->schema([
                 Forms\Components\Select::make('leavetype_id')
@@ -122,27 +124,30 @@ class LeaveResource extends Resource
                     ->sortable(),
             Tables\Columns\TextColumn::make('description')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('date')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\SelectColumn::make('leavetype_id')
-                    ->label('Leave Type')
-                    ->options(Leavetype::pluck('name', 'id')->toArray())
-                    ->sortable(),
-                Tables\Columns\SelectColumn::make('leavestatus_id')
-                    ->label('Status')
-                    ->options(Leavestatus::pluck('name', 'id')->toArray())
-                    ->sortable(),
-                // Tables\Columns\TextColumn::make('reason')
-                //     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+            Tables\Columns\TextColumn::make('date')
+                ->date()
+                ->sortable(),
+            Tables\Columns\TextColumn::make('to_date')
+                ->date()
+                ->sortable(),
+            Tables\Columns\SelectColumn::make('leavetype_id')
+                ->label('Leave Type')
+                ->options(Leavetype::pluck('name', 'id')->toArray())
+                ->sortable(),
+            Tables\Columns\SelectColumn::make('leavestatus_id')
+                ->label('Status')
+                ->options(Leavestatus::pluck('name', 'id')->toArray())
+                ->sortable(),
+            // Tables\Columns\TextColumn::make('reason')
+            //     ->searchable(),
+            Tables\Columns\TextColumn::make('created_at')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
+            Tables\Columns\TextColumn::make('updated_at')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
         ];
 
         if (in_array('Employee', $userRoles)) {

@@ -27,9 +27,9 @@ class AdminWidgets extends BaseWidget
             Stat::make('Total Users', User::count()),
             Stat::make('Users Registered Today', User::whereDate('created_at', today())->count()),
             Stat::make('Leaves Approved Today', $approvedLeavesToday),
-            Stat::make('Leaves Requested', $requestedCount),
-            Stat::make('Leaves Approved', $approvedCount),
-            Stat::make('Leaves Declined', $declinedCount),
+            // Stat::make('Leaves Requested', $requestedCount),
+            // Stat::make('Leaves Approved', $approvedCount),
+            // Stat::make('Leaves Declined', $declinedCount),
         ];
     }
 
