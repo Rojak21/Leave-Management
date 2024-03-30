@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\leave;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
@@ -12,7 +13,7 @@ class EmployeeWidget extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Total Employees', User::count()),
+            Stat::make('Total Employees', leave::count()),
         ];
     }
 

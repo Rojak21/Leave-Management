@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\LeaveResource\Pages;;
+use App\Filament\Resources\LeaveResource\Pages;
 use App\Models\Leave;
 use App\Models\leavepermission;
 use App\Models\leavestatus;
